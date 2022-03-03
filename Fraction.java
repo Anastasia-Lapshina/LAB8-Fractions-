@@ -57,74 +57,74 @@ public class Fraction {
     }
 
 
-    public Fraction Addition(Fraction SecondFraction) { //method for adding two fractions
+    public com.company.Fraction Addition(com.company.Fraction SecondFraction) { //method for adding two fractions
         int newNumerator = (numerator * SecondFraction.getDenominator()) +
                 (SecondFraction.getNumerator() * denominator);
         int newDenominator = denominator * SecondFraction.getDenominator();
 
-        return new Fraction(newNumerator, newDenominator); //using the method for building a fraction
+        return new com.company.Fraction(newNumerator, newDenominator); //using the method for building a fraction
     }
 
 
-    public Fraction Subtraction(Fraction SecondFraction) {
+    public com.company.Fraction Subtraction(com.company.Fraction SecondFraction) {
         int newNumerator = (numerator * SecondFraction.denominator) -
                 (SecondFraction.numerator * denominator);
         int newDenominator = denominator * SecondFraction.denominator;
 
-        return new Fraction(newNumerator, newDenominator);
+        return new com.company.Fraction(newNumerator, newDenominator);
     }
 
-    public Fraction Multiplication(Fraction SecondFraction) {
+    public com.company.Fraction Multiplication(com.company.Fraction SecondFraction) {
         int newNumerator = numerator * SecondFraction.numerator;
         int newDenominator = denominator * SecondFraction.denominator;
 
-        return new Fraction(newNumerator, newDenominator);
+        return new com.company.Fraction(newNumerator, newDenominator);
     }
 
-    public Fraction Division(Fraction SecondFraction) {
+    public com.company.Fraction Division(com.company.Fraction SecondFraction) {
         int newNumerator = numerator * SecondFraction.getDenominator();
         int newDenominator = denominator * SecondFraction.numerator;
 
-        return new Fraction(newNumerator, newDenominator);
+        return new com.company.Fraction(newNumerator, newDenominator);
     }
 
-    public static Fraction Addition(Fraction FirstFraction, Fraction SecondFraction) {
+    public static com.company.Fraction Addition(com.company.Fraction FirstFraction, com.company.Fraction SecondFraction) {
         int newNumerator = FirstFraction.getNumerator() * SecondFraction.getDenominator() + SecondFraction.getNumerator() * FirstFraction.getDenominator();
         int newDenominator = FirstFraction.getDenominator() * SecondFraction.getDenominator();
 
-        return new Fraction(newNumerator, newDenominator);
+        return new com.company.Fraction(newNumerator, newDenominator);
 
     }
 
-    public static Fraction Subtraction(Fraction FirstFraction, Fraction SecondFraction) {
+    public static com.company.Fraction Subtraction(com.company.Fraction FirstFraction, com.company.Fraction SecondFraction) {
         int numerator = FirstFraction.getNumerator() * SecondFraction.getDenominator() - SecondFraction.getNumerator() * FirstFraction.getDenominator();
         int denominator = FirstFraction.getDenominator() * SecondFraction.getDenominator();
 
-        return new Fraction(numerator, denominator);
+        return new com.company.Fraction(numerator, denominator);
     }
 
-    public static Fraction Multiplication(Fraction FirstFraction, Fraction SecondFraction) {
+    public static com.company.Fraction Multiplication(com.company.Fraction FirstFraction, com.company.Fraction SecondFraction) {
         int numerator = FirstFraction.getNumerator() * SecondFraction.getNumerator();
         int denominator = FirstFraction.getDenominator() * SecondFraction.getDenominator();
 
-        return new Fraction(numerator, denominator);
+        return new com.company.Fraction(numerator, denominator);
     }
 
-    public static Fraction Division(Fraction FirstFraction, Fraction SecondFraction) {
+    public static com.company.Fraction Division(com.company.Fraction FirstFraction, com.company.Fraction SecondFraction) {
         int numerator = FirstFraction.getNumerator() * SecondFraction.getDenominator();
         int denominator = FirstFraction.getDenominator() * SecondFraction.getNumerator();
 
-        return new Fraction(numerator, denominator);
+        return new com.company.Fraction(numerator, denominator);
     }
 
-    public static Fraction SimplestFraction() {
+    public static com.company.Fraction SimplestFraction() {
         int numerator = 1;
         int denominator = 1;
 
-        return new Fraction(numerator, denominator);
+        return new com.company.Fraction(numerator, denominator);
     }
 
-    public static String ConvertingToString(Fraction OurFraction) { //method for converting Fractions into String
+    public static String ConvertingToString(com.company.Fraction OurFraction) { //method for converting Fractions into String
         int numerator = OurFraction.getNumerator();
         int denominator = OurFraction.getDenominator();
 
@@ -139,7 +139,7 @@ public class Fraction {
 
     public static String ExtractingTheSymbol(String expression) throws Exception {
         String Symbol;
-        Pattern pattern = Pattern.compile("\\d+[-+:*]\\d+");
+        Pattern pattern = Pattern.compile("\\d[-+:*]\\d");
         Matcher matcher = pattern.matcher(expression);
 
         if (matcher.find()) {  //necessary for the piece of code to perform
@@ -162,11 +162,12 @@ public class Fraction {
             count += 1;
         }
 
-        Pattern pattern = Pattern.compile("\\d+[-+:*]\\d+");
+        Pattern pattern = Pattern.compile("[0-9][-+:*]\\d");
         Matcher matcher = pattern.matcher(expression);
 
+
         if (matcher.find()) {  //necessary for the piece of code to perform correctly
-            Symbol = matcher.group().substring(1, 2);
+            Symbol = matcher.group(0).substring(1, 2);
             indexOfSymbol = expression.indexOf(Symbol);
             if (count == 1) {
                 return indexOfSymbol + 1;
