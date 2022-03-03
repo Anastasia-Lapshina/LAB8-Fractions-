@@ -155,18 +155,25 @@ public class Fraction {
     public static int IndexOfTheSymbol(String expression) throws Exception {
         String Symbol;
         int indexOfSymbol;
+        int count = 0;
 
         if(expression.charAt(0) == '-'){  //if the first fraction starts with "-", remove the first "minus" symbol
             expression = expression.substring(1);
+            count += 1;
         }
 
         Pattern pattern = Pattern.compile("\\d+[-+:*]\\d+");
         Matcher matcher = pattern.matcher(expression);
 
-        if (matcher.find()) {  //necessary for the piece of code to perform
+        if (matcher.find()) {  //necessary for the piece of code to perform correctly
             Symbol = matcher.group().substring(1, 2);
             indexOfSymbol = expression.indexOf(Symbol);
-            return indexOfSymbol;
+            if (count == 1) {
+                return indexOfSymbol + 1;
+            }
+            else {
+                return indexOfSymbol;
+            }
         }
 
         else {
