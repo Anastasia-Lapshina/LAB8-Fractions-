@@ -17,9 +17,9 @@ public class Fraction {
         int denominator;
         String slash = "/";
 
-        int indexOfDash = Fraction.indexOf(slash);  //finding the index of the dash in the Fraction
-        String numeratorString = Fraction.substring(0, indexOfDash);
-        String denominatorString = Fraction.substring(indexOfDash + 1);
+        int indexOfSlash = Fraction.indexOf(slash);  //finding the index of the dash in the Fraction
+        String numeratorString = Fraction.substring(0, indexOfSlash);
+        String denominatorString = Fraction.substring(indexOfSlash + 1);
         numerator = Integer.parseInt(numeratorString);
         denominator = Integer.parseInt(denominatorString);
 

@@ -11,7 +11,7 @@ public class StringOperations {
 
     public static String ExtractingTheSymbol(String expression) throws Exception {
         String Symbol;
-        Pattern pattern = Pattern.compile("([0-9][-+:*]\\d)|([0-9][-+:*]-\\d)");
+        Pattern pattern = Pattern.compile("([0-9][-+:*]-*\\d)");
         Matcher matcher = pattern.matcher(expression);
 
         if (matcher.find()) {  //necessary for the piece of code to perform
@@ -34,7 +34,7 @@ public class StringOperations {
             count += 1;
         }
 
-        Pattern pattern = Pattern.compile("([0-9][-+:*]\\d)|([0-9][-+:*]-\\d)");
+        Pattern pattern = Pattern.compile("([0-9][-+:*]-*\\d)");
         Matcher matcher = pattern.matcher(expression);
 
 
